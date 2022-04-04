@@ -1,0 +1,14 @@
+# gitignore for my nodelist generator
+
+.redo
+
+neigh/env.sh
+neigh/entries-self/**
+neigh/merged-entries/**
+!neigh/merged-entries/default.do
+nncp.hjson
+neigh/sample.hjson
+
+neigh/neigh.json
+nncp.json
+out.json

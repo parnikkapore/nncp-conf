@@ -1,0 +1,34 @@
+#!/bin/bash
+
+# fetch quux entries first
+redo-ifchange entries-quux
+
+# depcheck
+for f in ./entries-*/*; do
+    echo ${f}
+done |
+xargs redo-ifchange
+
+# Strict mode
+set -eu -o pipefail
+IFS=$'\n\t'
+
+# Setup
+_pwd=$(pwd)
+rm -rf entries/
+mkdir -p entries
+
+# Process all entries to JSON
+for f in ./entries-*/*; do
+    hjson-cli -j "${f}" > "./entries/$(basename -a $f)"
+done
+
+# Stitch them together
+cd entries
+jq '{(input_filename): .}' * \
+    | jq -s 'reduce .[] as $a ({}; . * $a) | {neigh: .}' \
+    > ${_pwd}/$3
+
+# Cleanup
+cd ..
+rm -rf entries/
