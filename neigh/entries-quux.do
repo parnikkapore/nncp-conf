@@ -1,13 +1,11 @@
 # For extracting node list from quux's list
 
 source env.sh
-nodetar="${quux_incoming}/quux-pub/nodelist.tar.gz"
-nodetmp="$(tempfile -p 'ndlst')"
+nodetar="${quux_incoming}/nodelist.tar.gz"
+nodetmp="$(mktemp -d)"
 
 redo-ifchange "$nodetar"
 
-rm "$nodetmp"
-mkdir -p "$nodetmp"
 tar --extract --gzip --file "$nodetar" --directory "$nodetmp"
 
 rm -rf entries-quux

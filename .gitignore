@@ -4,8 +4,7 @@
 
 neigh/env.sh
 neigh/entries-self/**
-neigh/merged-entries/**
-!neigh/merged-entries/default.do
+neigh/merged-entries/**.json
 nncp.hjson
 neigh/sample.hjson
 
