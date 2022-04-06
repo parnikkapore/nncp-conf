@@ -17,7 +17,7 @@ done
 # and go
 cd "${jsons}"
 jq '{(input_filename): .}' * \
-    | jq -s 'reduce .[] as $a ({}; . * $a) | {neigh: .}' \
+    | jq -s 'reduce .[] as $a ({}; . * $a)' \
     > ${_pwd}/$3
 
 # cleanup

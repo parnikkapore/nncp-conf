@@ -1,6 +1,6 @@
 # For extracting node list from quux's list
 
-source env.sh
+. ./env.sh
 nodetar="${quux_incoming}/nodelist.tar.gz"
 nodetmp="$(mktemp -d)"
 

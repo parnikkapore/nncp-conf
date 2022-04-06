@@ -11,6 +11,5 @@ find . -type d -path './entries-*' -printf 'merged-entries/%f.json\0' | xargs -0
 
 # Then stitch them together
 cd merged-entries
-jq '{(input_filename): .}' *.json \
-    | jq -s 'reduce .[] as $a ({}; . * $a) | {neigh: .}' \
+jq -s 'reduce .[] as $a ({}; . * $a)  | {neigh: .}' *.json \
     > ${_pwd}/$3

@@ -3,7 +3,7 @@
 .redo
 
 neigh/env.sh
-neigh/entries-self/**
+neigh/entries-*
 neigh/merged-entries/**.json
 nncp.hjson
 neigh/sample.hjson
