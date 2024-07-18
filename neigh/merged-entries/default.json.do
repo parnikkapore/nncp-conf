@@ -4,21 +4,22 @@
 redo-ifchange "${2}.ls"
 
 # Make a temp directory for the json files
-export jsons="$(mktemp -d)"
-export _pwd="${PWD}"
+jsons="$(mktemp -d)"
+_pwd="${PWD}"
+export jsons _pwd
 
 cd "../${2}" || exit 123
 
 # convert
 for f in *; do
-    hjson-cli -j "${f}" > "${jsons}/$(basename -a $f)"
+    hjson-cli -j "${f}" > "${jsons}/$(basename -a "$f")"
 done
 
 # and go
-cd "${jsons}"
-jq '{(input_filename): .}' * \
+cd "${jsons}" || exit 124
+jq '{(input_filename): .}' -- * \
     | jq -s 'reduce .[] as $a ({}; . * $a)' \
-    > ${_pwd}/$3
+    > "${_pwd}"/"$3"
 
 # cleanup
 rm -r "${jsons}"

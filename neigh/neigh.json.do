@@ -10,6 +10,6 @@ redo-ifchange entries-quux
 find . -type d -path './entries-*' -printf 'merged-entries/%f.json\0' | xargs -0 redo-ifchange
 
 # Then stitch them together
-cd merged-entries
-jq -s 'reduce .[] as $a ({}; . * $a)  | {neigh: .}' *.json \
-    > ${_pwd}/$3
+cd merged-entries || exit 123
+jq -s 'reduce .[] as $a ({}; . * $a) | {neigh: .}' -- *.json \
+    > "${_pwd}"/"$3"
