@@ -1,4 +1,5 @@
 # Generates quux entries
+# shellcheck shell=sh
 
 # depcheck
 redo-ifchange "entries-quux.ls"

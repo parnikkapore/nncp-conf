@@ -1,4 +1,5 @@
 # Merge all neighbour records together ========================================
+# shellcheck shell=sh
 
 # Setup
 _pwd=$(pwd)

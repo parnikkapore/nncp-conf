@@ -1,4 +1,5 @@
 # For extracting node list from quux's list
+# shellcheck shell=sh
 
 . ./env.sh
 nodetar="${quux_incoming}/nodelist.tar.gz"

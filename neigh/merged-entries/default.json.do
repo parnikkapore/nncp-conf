@@ -1,4 +1,5 @@
-# Generates an entry for a directory 
+# Generates an entry for a directory
+# shellcheck shell=sh
 
 # depcheck
 redo-ifchange "${2}.ls"

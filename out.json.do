@@ -1,5 +1,6 @@
 # For finally merging everything together
 
+# shellcheck shell=sh
 # shellcheck disable=SC2086  # Yes, splitting by IFS is supposed to happen here
 
 FILES='nncp.json neigh/neigh.json'

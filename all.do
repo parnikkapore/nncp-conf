@@ -1,4 +1,5 @@
 # For merging config and saving it to the main config file
+# shellcheck shell=sh
 
 redo-ifchange out.json
 
